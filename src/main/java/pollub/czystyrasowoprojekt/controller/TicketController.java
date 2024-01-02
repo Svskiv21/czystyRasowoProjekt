@@ -18,7 +18,7 @@ public class TicketController {
         this.ticketRepository = ticketRepository;
     }
 
-    @GetMapping("/all-tickets")
+    @GetMapping("/all-tickets") // zwraca brzydko w klamrach info jak na labach u Panczykowej w jednym wierszu
     public String getAllTickets(){
         StringBuilder odp = new StringBuilder();
         for (Ticket t : ticketRepository.findAll()){
@@ -27,7 +27,7 @@ public class TicketController {
         return odp.toString();
     }
 
-    @GetMapping("/dawaj-bilety")
+    @GetMapping("/dawaj-bilety") // to zwraca jsona w postmanie
     public List<Ticket> dawacWszyskieBilety(){
         return ticketService.dawajWszyskieBilety();
     }

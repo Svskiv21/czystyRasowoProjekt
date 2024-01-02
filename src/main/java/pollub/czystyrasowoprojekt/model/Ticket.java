@@ -16,26 +16,41 @@ public class Ticket {
     @Id
     private Long id;
 
-    @Column
-    private String name;
+//    @Column
+//    private Integer event_id;
 
     @Column
     private Double price;
 
+    @Column(name = "seat_number")
+    private Integer seatNumber;
+
+//    @Column
+//    private Long order_id;
+
+    @Column
+    private Integer row;
+
+    @Column(name = "zone_number")
+    private Integer zoneNumber;
+
     public Ticket() {
     }
 
-    public Ticket(String name, Double price) {
-        this.name = name;
+    public Ticket(Double price, Integer seatNumber, Integer row, Integer zoneNumber) {
         this.price = price;
+        this.seatNumber = seatNumber;
+        this.row = row;
+        this.zoneNumber = zoneNumber;
     }
 
     @Override
     public String toString() {
         return "Ticket{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", price=" + price +
+                ", seatNumber=" + seatNumber +
+                ", row=" + row +
                 '}';
     }
 }
