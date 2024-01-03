@@ -1,6 +1,7 @@
 package pollub.czystyrasowoprojekt.controller;
 
 import org.springframework.web.bind.annotation.*;
+import pollub.czystyrasowoprojekt.dtos.TicketDto;
 import pollub.czystyrasowoprojekt.model.Ticket;
 import pollub.czystyrasowoprojekt.repository.TicketRepository;
 import pollub.czystyrasowoprojekt.service.TicketService;
@@ -33,8 +34,9 @@ public class TicketController {
     }
 
     @PostMapping("/addTicket")
-    public Ticket addNewTicket(@RequestBody Ticket ticket){
-        return ticketService.addTicket(ticket);
+    public String addNewTicket(@RequestBody TicketDto ticketDto){
+        ticketService.addTicket(ticketDto);
+        return "New ticket added to the database.";
     }
 
     @DeleteMapping("delete-ticket/{id}")

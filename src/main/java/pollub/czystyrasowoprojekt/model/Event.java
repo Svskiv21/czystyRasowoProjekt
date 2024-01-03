@@ -1,14 +1,12 @@
 package pollub.czystyrasowoprojekt.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,9 +18,6 @@ public class Event {
     @Id
     private Long id;
 
-//    @Column(name = "event_type_id")
-//    private Long eventTypeId;
-
     @Column
     private String title;
 
@@ -32,22 +27,28 @@ public class Event {
     @Column
     private String pictures;
 
-    @Column(name = "start_date")
+    @Column(name = "startDate")
     private Date startDate;
 
-    @Column(name = "end_date")
+    @Column(name = "endDate")
     private Date endDate;
 
     @Column
     private String address;
 
-    @Column(name = "limited_number_of_seats")
-    private Boolean limitedNrOfSeats;
+    @Column(name = "limitedNumberOfSeats")
+    private Boolean limitedNumberOfSeats;
+
+//    @Column(name = "event_type_id")
+//    private Long eventTypeId;
 
 //    @Column(name = "number_of_zones")
 //    private Integer numberOfZone; // to bedzie foreign key
 
-    @Column(name = "age_range")
+    @OneToMany(mappedBy = "event")
+    private List<Ticket> tickets;
+
+    @Column(name = "ageRange")
     private String ageRange;
 
     public Event(String title,
@@ -56,8 +57,8 @@ public class Event {
                  Date startDate,
                  Date endDate,
                  String address,
-                 Boolean limitedNrOfSeats,
-//                 Integer numberOfZone,
+                 Boolean limitedNumberOfSeats,
+                 List<Ticket> tickets,
                  String ageRange) {
         this.title = title;
         this.description = description;
@@ -65,8 +66,8 @@ public class Event {
         this.startDate = startDate;
         this.endDate = endDate;
         this.address = address;
-        this.limitedNrOfSeats = limitedNrOfSeats;
-//        this.numberOfZone = numberOfZone;
+        this.limitedNumberOfSeats = limitedNumberOfSeats;
+        this.tickets = tickets;
         this.ageRange = ageRange;
     }
 }

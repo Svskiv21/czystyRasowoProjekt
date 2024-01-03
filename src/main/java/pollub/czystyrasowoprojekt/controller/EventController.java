@@ -2,6 +2,7 @@ package pollub.czystyrasowoprojekt.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import pollub.czystyrasowoprojekt.dtos.EventDto;
 import pollub.czystyrasowoprojekt.model.Event;
 import pollub.czystyrasowoprojekt.service.EventService;
 
@@ -25,13 +26,13 @@ public class EventController {
     }
 
     @GetMapping("/all")
-    public List<Event> getAllEvents(){
+    public List<EventDto> getAllEvents(){
         return eventService.getAllEvents();
     }
 
     @PostMapping("/add")
-    public Event addNewEvent(@RequestBody Event event){
-        return eventService.addEvent(event);
+    public Event addNewEvent(@RequestBody EventDto eventDto){
+        return eventService.addEvent(eventDto);
     }
 
     @DeleteMapping("delete/{id}")

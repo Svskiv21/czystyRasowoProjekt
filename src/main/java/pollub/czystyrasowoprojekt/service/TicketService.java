@@ -1,6 +1,8 @@
 package pollub.czystyrasowoprojekt.service;
 
 import org.springframework.stereotype.Service;
+import pollub.czystyrasowoprojekt.dtos.TicketDto;
+import pollub.czystyrasowoprojekt.mappers.TicketMapper;
 import pollub.czystyrasowoprojekt.model.Ticket;
 import pollub.czystyrasowoprojekt.repository.TicketRepository;
 
@@ -19,8 +21,8 @@ public class TicketService {
         return (List<Ticket>) ticketRepository.findAll();
     }
 
-    public Ticket addTicket(Ticket ticket){
-        return ticketRepository.save(ticket);
+    public void addTicket(TicketDto ticketDto){
+        ticketRepository.save(TicketMapper.INSTANCE.ticketDtoToTicket(ticketDto));
     }
 
     public void deleteTicket(Integer id){

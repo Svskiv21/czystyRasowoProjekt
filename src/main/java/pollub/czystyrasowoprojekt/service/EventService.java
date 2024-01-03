@@ -2,10 +2,15 @@ package pollub.czystyrasowoprojekt.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import pollub.czystyrasowoprojekt.dtos.EventDto;
+import pollub.czystyrasowoprojekt.mappers.EventMapper;
 import pollub.czystyrasowoprojekt.model.Event;
 import pollub.czystyrasowoprojekt.repository.EventRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.antlr.v4.runtime.tree.xpath.XPath.findAll;
 
 @AllArgsConstructor
 @Service
@@ -25,20 +30,13 @@ public class EventService {
         }
     }
 
-//        public Event getEventByName(String name){
-//        try {
-//            return eventRepository.findByName(name);
-//        } catch (Exception e) {
-//            throw new RuntimeException("Event with given title does not exist.");
-//        }
-//    }
-
-    public List<Event> getAllEvents(){
-        return eventRepository.findAll();
+    public List<EventDto> getAllEvents(){
+        List<Event> events = eventRepository.findAll();
+        return events.stream().map(EventMapper.INSTANCE::eventToEventDto).collect(Collectors.toList());
     }
 
-    public Event addEvent(Event event){
-        return eventRepository.save(event);
+    public Event addEvent(EventDto eventDto){
+        return eventRepository.save(EventMapper.INSTANCE.eventDtoToEvent(eventDto));
     }
 
     public void deleteEvent(Integer id){
