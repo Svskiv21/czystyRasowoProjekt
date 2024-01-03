@@ -27,7 +27,7 @@ public class TicketService {
         if (ticketRepository.findById(id.longValue()).isPresent()){
             ticketRepository.deleteById(id.longValue());
         } else {
-            throw new RuntimeException("Ticket with given id does not exist in database.");
+            throw new RuntimeException("Ticket with given id does not exist in the database.");
         }
     }
 }

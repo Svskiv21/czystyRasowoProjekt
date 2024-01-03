@@ -5,10 +5,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 public class Ticket {
 
@@ -33,9 +35,6 @@ public class Ticket {
 
     @Column(name = "zone_number")
     private Integer zoneNumber;
-
-    public Ticket() {
-    }
 
     public Ticket(Double price, Integer seatNumber, Integer row, Integer zoneNumber) {
         this.price = price;
