@@ -1,16 +1,11 @@
 package pollub.czystyrasowoprojekt.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@Builder
 @Entity
 public class Ticket {
 
@@ -18,8 +13,9 @@ public class Ticket {
     @Id
     private Long id;
 
-//    @Column
-//    private Integer event_id;
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event event;
 
     @Column
     private Double price;
@@ -36,20 +32,30 @@ public class Ticket {
     @Column(name = "zone_number")
     private Integer zoneNumber;
 
-    public Ticket(Double price, Integer seatNumber, Integer row, Integer zoneNumber) {
-        this.price = price;
-        this.seatNumber = seatNumber;
-        this.row = row;
-        this.zoneNumber = zoneNumber;
-    }
+//    public Ticket(Event event,
+//                  Double price,
+//                  Integer seatNumber,
+//                  Integer row,
+//                  Integer zoneNumber) {
+//        this.event = event;
+//        this.price = price;
+//        this.seatNumber = seatNumber;
+//        this.row = row;
+//        this.zoneNumber = zoneNumber;
+//    }
+//
+//    public Ticket() {
+//    }
 
     @Override
     public String toString() {
         return "Ticket{" +
                 "id=" + id +
+                ", event=" + event +
                 ", price=" + price +
                 ", seatNumber=" + seatNumber +
                 ", row=" + row +
+                ", zoneNumber=" + zoneNumber +
                 '}';
     }
 }

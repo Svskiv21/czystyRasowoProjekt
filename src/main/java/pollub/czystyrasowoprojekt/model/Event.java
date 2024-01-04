@@ -1,14 +1,12 @@
 package pollub.czystyrasowoprojekt.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,6 +17,9 @@ public class Event {
     @GeneratedValue
     @Id
     private Long id;
+
+    @OneToMany(mappedBy = "event")
+    private List<Ticket> tickets;
 
 //    @Column(name = "event_type_id")
 //    private Long eventTypeId;
@@ -50,23 +51,39 @@ public class Event {
     @Column(name = "age_range")
     private String ageRange;
 
-    public Event(String title,
-                 String description,
-                 String pictures,
-                 Date startDate,
-                 Date endDate,
-                 String address,
-                 Boolean limitedNrOfSeats,
-//                 Integer numberOfZone,
-                 String ageRange) {
-        this.title = title;
-        this.description = description;
-        this.pictures = pictures;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.address = address;
-        this.limitedNrOfSeats = limitedNrOfSeats;
-//        this.numberOfZone = numberOfZone;
-        this.ageRange = ageRange;
+//    public Event(List<Ticket> tickets,
+//                 String title,
+//                 String description,
+//                 String pictures,
+//                 Date startDate,
+//                 Date endDate,
+//                 String address,
+//                 Boolean limitedNrOfSeats,
+//                 String ageRange) {
+//        this.tickets = tickets;
+//        this.title = title;
+//        this.description = description;
+//        this.pictures = pictures;
+//        this.startDate = startDate;
+//        this.endDate = endDate;
+//        this.address = address;
+//        this.limitedNrOfSeats = limitedNrOfSeats;
+//        this.ageRange = ageRange;
+//    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", tickets=" + tickets +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", pictures='" + pictures + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", address='" + address + '\'' +
+                ", limitedNrOfSeats=" + limitedNrOfSeats +
+                ", ageRange='" + ageRange + '\'' +
+                '}';
     }
 }
