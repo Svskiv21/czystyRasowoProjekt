@@ -1,5 +1,6 @@
 package pollub.czystyrasowoprojekt.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pollub.czystyrasowoprojekt.dtos.TicketDto;
 import pollub.czystyrasowoprojekt.model.Ticket;
@@ -9,27 +10,23 @@ import pollub.czystyrasowoprojekt.service.TicketService;
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 public class TicketController {
 
     public TicketService ticketService;
     public TicketRepository ticketRepository;
 
-    public TicketController(TicketService ticketService, TicketRepository ticketRepository) {
-        this.ticketService = ticketService;
-        this.ticketRepository = ticketRepository;
-    }
-
-    @GetMapping("/all-tickets") // zwraca brzydko w klamrach info jak na labach u Panczykowej w jednym wierszu
+    @GetMapping("/all-tickets") // zwraca pieknie jsona
     public String getAllTickets(){
         StringBuilder odp = new StringBuilder();
-        for (Ticket t : ticketRepository.findAll()){
+        for (TicketDto t : ticketService.dawajWszyskieBilety()){
             odp.append(t).append("<br>");
         }
         return odp.toString();
     }
 
-    @GetMapping("/dawaj-bilety") // to zwraca jsona w postmanie
-    public List<Ticket> dawacWszyskieBilety(){
+    @GetMapping("/dawaj-bilety") // to zwraca g*wno w postmanie
+    public List<TicketDto> dawacWszyskieBilety(){
         return ticketService.dawajWszyskieBilety();
     }
 
