@@ -39,8 +39,9 @@ public class Event {
     @Column(name = "limitedNumberOfSeats")
     private Boolean limitedNumberOfSeats;
 
-//    @Column(name = "event_type_id")
-//    private Long eventTypeId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "eventType_id")
+    private EventType eventType;
 
 //    @Column(name = "number_of_zones")
 //    private Integer numberOfZone; // to bedzie foreign key
