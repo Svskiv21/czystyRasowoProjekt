@@ -5,13 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
-public class EventType {
+public class Zone {
 
     @GeneratedValue
     @Id
@@ -20,20 +18,28 @@ public class EventType {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "eventType")
-    private List<Event> events;
+    @Column
+    private Double price;
 
-    public EventType(String name, List<Event> events) {
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event event;
+
+    public Zone(String name,
+                Double price,
+                Event event) {
         this.name = name;
-        this.events = events;
+        this.price = price;
+        this.event = event;
     }
 
     @Override
     public String toString() {
-        return "EventType{" +
+        return "Zone{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", events=" + events +
+                ", price=" + price +
+                ", event=" + event +
                 '}';
     }
 }

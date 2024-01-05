@@ -25,8 +25,8 @@ public class Ticket {
     @Column(name = "seatNumber")
     private Integer seatNumber;
 
-//    @Column
-//    private Long order_id;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Order order;
 
     @Column
     private Integer row;
@@ -37,11 +37,13 @@ public class Ticket {
     public Ticket(Event event,
                   Double price,
                   Integer seatNumber,
+                  Order order,
                   Integer row,
                   Integer zoneNumber) {
         this.event = event;
         this.price = price;
         this.seatNumber = seatNumber;
+        this.order = order;
         this.row = row;
         this.zoneNumber = zoneNumber;
     }
@@ -53,6 +55,7 @@ public class Ticket {
                 ", event=" + event +
                 ", price=" + price +
                 ", seatNumber=" + seatNumber +
+                ", order=" + order +
                 ", row=" + row +
                 ", zoneNumber=" + zoneNumber +
                 '}';

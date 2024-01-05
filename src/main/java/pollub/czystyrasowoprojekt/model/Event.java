@@ -43,8 +43,8 @@ public class Event {
     @JoinColumn(name = "eventType_id")
     private EventType eventType;
 
-//    @Column(name = "number_of_zones")
-//    private Integer numberOfZone; // to bedzie foreign key
+    @OneToMany(mappedBy = "event")
+    private List<Zone> zones;
 
     @OneToMany(mappedBy = "event")
     private List<Ticket> tickets;
@@ -59,6 +59,8 @@ public class Event {
                  Date endDate,
                  String address,
                  Boolean limitedNumberOfSeats,
+                 EventType eventType,
+                 List<Zone> zones,
                  List<Ticket> tickets,
                  String ageRange) {
         this.title = title;
@@ -68,7 +70,27 @@ public class Event {
         this.endDate = endDate;
         this.address = address;
         this.limitedNumberOfSeats = limitedNumberOfSeats;
+        this.eventType = eventType;
+        this.zones = zones;
         this.tickets = tickets;
         this.ageRange = ageRange;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", pictures='" + pictures + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", address='" + address + '\'' +
+                ", limitedNumberOfSeats=" + limitedNumberOfSeats +
+                ", eventType=" + eventType +
+                ", zones=" + zones +
+                ", tickets=" + tickets +
+                ", ageRange='" + ageRange + '\'' +
+                '}';
     }
 }
