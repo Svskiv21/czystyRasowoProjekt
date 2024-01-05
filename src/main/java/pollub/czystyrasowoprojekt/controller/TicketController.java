@@ -3,7 +3,6 @@ package pollub.czystyrasowoprojekt.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pollub.czystyrasowoprojekt.dtos.TicketDto;
-import pollub.czystyrasowoprojekt.model.Ticket;
 import pollub.czystyrasowoprojekt.repository.TicketRepository;
 import pollub.czystyrasowoprojekt.service.TicketService;
 

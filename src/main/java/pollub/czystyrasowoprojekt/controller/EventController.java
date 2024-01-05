@@ -16,13 +16,8 @@ public class EventController {
     public EventService eventService;
 
     @GetMapping("/get/{id}")
-    public Event getEvent(@PathVariable Integer id){
+    public EventDto getEvent(@PathVariable Integer id){
         return eventService.getEventById(id);
-    }
-
-    @GetMapping("/getByTitle")
-    public Event getEventByTitle(@RequestParam String title){
-        return eventService.getEventByTitle(title);
     }
 
     @GetMapping("/all")

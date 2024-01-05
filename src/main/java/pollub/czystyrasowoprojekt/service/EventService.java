@@ -10,24 +10,15 @@ import pollub.czystyrasowoprojekt.repository.EventRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.antlr.v4.runtime.tree.xpath.XPath.findAll;
-
 @AllArgsConstructor
 @Service
 public class EventService {
 
     private EventRepository eventRepository;
 
-    public Event getEventById(Integer id){
-        return eventRepository.findById(id.longValue()).orElseThrow();
-    }
-
-    public Event getEventByTitle(String title){
-        try {
-            return eventRepository.findEventByTitle(title);
-        } catch (Exception e) {
-            throw new RuntimeException("Event with given title does not exist.");
-        }
+    public EventDto getEventById(Integer id){
+//        return eventRepository.findById(id.longValue()).orElseThrow();
+        return eventRepository.findById(id.longValue()).map(EventMapper.INSTANCE::eventToEventDto).orElseThrow();
     }
 
     public List<EventDto> getAllEvents(){
