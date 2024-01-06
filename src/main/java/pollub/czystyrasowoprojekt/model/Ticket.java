@@ -25,8 +25,9 @@ public class Ticket {
     @Column(name = "seatNumber")
     private Integer seatNumber;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Order order;
+    @ManyToOne
+    @JoinColumn(name = "kucOrder_id")
+    private KucOrder kucOrder;
 
     @Column
     private Integer row;
@@ -34,16 +35,17 @@ public class Ticket {
     @Column(name = "zoneNumber")
     private Integer zoneNumber;
 
+
     public Ticket(Event event,
                   Double price,
                   Integer seatNumber,
-                  Order order,
+                  KucOrder kucOrder,
                   Integer row,
                   Integer zoneNumber) {
         this.event = event;
         this.price = price;
         this.seatNumber = seatNumber;
-        this.order = order;
+        this.kucOrder = kucOrder;
         this.row = row;
         this.zoneNumber = zoneNumber;
     }
@@ -55,7 +57,7 @@ public class Ticket {
                 ", event=" + event +
                 ", price=" + price +
                 ", seatNumber=" + seatNumber +
-                ", order=" + order +
+                ", kucOrder=" + kucOrder +
                 ", row=" + row +
                 ", zoneNumber=" + zoneNumber +
                 '}';

@@ -5,11 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter
 @Getter
 @NoArgsConstructor
 @Entity
-public class Order {
+public class KucOrder {
 
     @GeneratedValue
     @Id
@@ -20,18 +22,17 @@ public class Order {
     @Column
     private String paymentMethod;
 
-    @OneToOne(mappedBy = "order")
-    private Ticket ticket;
+    @OneToMany(mappedBy = "kucOrder")
+    private List<Ticket> ticket;
 
-    public Order(String paymentMethod,
-                 Ticket ticket) {
+    public KucOrder(String paymentMethod, List<Ticket> ticket) {
         this.paymentMethod = paymentMethod;
         this.ticket = ticket;
     }
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "KucOrder{" +
                 "id=" + id +
                 ", paymentMethod='" + paymentMethod + '\'' +
                 ", ticket=" + ticket +
