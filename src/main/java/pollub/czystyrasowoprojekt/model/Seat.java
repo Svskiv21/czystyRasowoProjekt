@@ -21,7 +21,7 @@ public class Seat
     @Column
     private Integer row;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @ManyToOne
