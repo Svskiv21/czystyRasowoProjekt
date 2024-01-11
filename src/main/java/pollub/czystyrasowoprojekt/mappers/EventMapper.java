@@ -33,4 +33,6 @@ public interface EventMapper {
     static List<Long> kurrrZapial(Event event){
         return event.getTickets().stream().map(Ticket::getId).collect(Collectors.toList());
     }
+
+
 }

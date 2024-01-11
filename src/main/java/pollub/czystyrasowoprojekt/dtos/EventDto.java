@@ -24,6 +24,10 @@ public class EventDto {
 
     private Boolean limitedNrOfSeats;
 
+    private Long eventTypeId; // nowe
+
+    private List<Long> znoesIds; // nowe
+
     private List<Long> ticketsIds;
 
     private String ageRange;

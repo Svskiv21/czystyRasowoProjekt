@@ -26,16 +26,13 @@ public class Seat
 
     @ManyToOne
     @JoinColumn()
-    private Event event;
+    private Zone zone;
 
-    public Seat(Integer number,
-                Integer row,
-                Status status,
-                Event event) {
+    public Seat(Integer number, Integer row, Status status, Zone zone) {
         this.number = number;
         this.row = row;
         this.status = status;
-        this.event = event;
+        this.zone = zone;
     }
 
     @Override
@@ -45,7 +42,7 @@ public class Seat
                 ", number=" + number +
                 ", row=" + row +
                 ", status=" + status +
-                ", event=" + event +
+                ", zone=" + zone +
                 '}';
     }
 }

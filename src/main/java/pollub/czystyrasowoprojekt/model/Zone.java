@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -25,12 +27,14 @@ public class Zone {
     @JoinColumn(name = "event_id")
     private Event event;
 
-    public Zone(String name,
-                Double price,
-                Event event) {
+    @OneToMany
+    private List<Seat> seats;
+
+    public Zone(String name, Double price, Event event, List<Seat> seats) {
         this.name = name;
         this.price = price;
         this.event = event;
+        this.seats = seats;
     }
 
     @Override
@@ -40,6 +44,7 @@ public class Zone {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", event=" + event +
+                ", seats=" + seats +
                 '}';
     }
 }

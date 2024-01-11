@@ -22,7 +22,7 @@ public class EventService {
     }
 
     public List<EventDto> getAllEvents(){
-        List<Event> events = eventRepository.findAll();
+        List<Event> events = (List<Event>) eventRepository.findAll();
         return events.stream().map(EventMapper.INSTANCE::eventToEventDto).collect(Collectors.toList());
     }
 

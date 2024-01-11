@@ -41,10 +41,10 @@ public class Event {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "eventType_id")
-    private EventType eventType;
+    private EventType eventType; // tego nie ma w dto
 
     @OneToMany(mappedBy = "event")
-    private List<Zone> zones;
+    private List<Zone> zones; // tego nie ma w dto
 
     @OneToMany(mappedBy = "event")
     private List<Ticket> tickets;
