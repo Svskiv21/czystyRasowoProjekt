@@ -16,7 +16,11 @@ public class TicketService {
 
     public TicketRepository ticketRepository;
 
-    public List<TicketDto> dawajWszyskieBilety(){
+    public TicketDto jedenBiletDawaj(Long id){
+        return ticketRepository.findById(id).map(TicketMapper.INSTANCE::ticketToTicketDto).orElseThrow();
+    }
+
+    public List<TicketDto> dawajWszyskieBiletyToJestNapad(){
         List<Ticket> tickets = (List<Ticket>) ticketRepository.findAll();
         return tickets.stream().map(TicketMapper.INSTANCE::ticketToTicketDto).collect(Collectors.toList());
     }

@@ -9,27 +9,24 @@ import pollub.czystyrasowoprojekt.service.TicketService;
 import java.util.List;
 
 @RestController
+@RequestMapping(path = "/tickets")
 @AllArgsConstructor
 public class TicketController {
 
     public TicketService ticketService;
     public TicketRepository ticketRepository;
 
+    @GetMapping("/get/{id}")
+    public TicketDto tenKonkretnyBiletPoprosze(@PathVariable Long id){
+        return ticketService.jedenBiletDawaj(id);
+    }
+
     @GetMapping("/all-tickets") // zwraca pieknie jsona
-    public String getAllTickets(){
-        StringBuilder odp = new StringBuilder();
-        for (TicketDto t : ticketService.dawajWszyskieBilety()){
-            odp.append(t).append("<br>");
-        }
-        return odp.toString();
+    public List<TicketDto> getAllTickets(){
+        return ticketService.dawajWszyskieBiletyToJestNapad();
     }
 
-    @GetMapping("/dawaj-bilety") // to zwraca g*wno w postmanie
-    public List<TicketDto> dawacWszyskieBilety(){
-        return ticketService.dawajWszyskieBilety();
-    }
-
-    @PostMapping("/addTicket")
+    @PostMapping("/add")
     public String addNewTicket(@RequestBody TicketDto ticketDto){
         ticketService.addTicket(ticketDto);
         return "New ticket added to the database.";

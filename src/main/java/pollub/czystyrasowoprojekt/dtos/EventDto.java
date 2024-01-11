@@ -26,7 +26,7 @@ public class EventDto {
 
     private Long eventTypeId; // nowe
 
-    private List<Long> znoesIds; // nowe
+    private List<Long> zonesIds; // nowe
 
     private List<Long> ticketsIds;
 

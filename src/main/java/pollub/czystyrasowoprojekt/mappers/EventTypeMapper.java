@@ -11,7 +11,8 @@ import pollub.czystyrasowoprojekt.model.Event;
 import pollub.czystyrasowoprojekt.model.EventType;
 
 @Mapper(unmappedSourcePolicy = ReportingPolicy.IGNORE,
-        unmappedTargetPolicy = ReportingPolicy.IGNORE)
+        unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        uses = {EventMapper.class})
 public interface EventTypeMapper {
 
     public static final EventTypeMapper INSTANCE = Mappers.getMapper(EventTypeMapper.class);
@@ -19,11 +20,11 @@ public interface EventTypeMapper {
 
     EventType eventTypeDtoToEventType(EventTypeDto eventTypeDto);
 
+    @Mapping(source = "events", target = "eventsIds", qualifiedByName = "eventToEventId")
+    EventTypeDto eventTypeToEventTypeDto(EventType eventType);
+
     @Named("eventToEventId")
     static Long eventToEventId(Event event){
         return event.getId();
     }
-
-    @Mapping(target = "eventsIds", source = "events", qualifiedByName = "eventToEventId")
-    EventTypeDto eventTypeToEventTypeDto(EventType eventType);
 }
