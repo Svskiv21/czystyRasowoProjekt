@@ -19,9 +19,11 @@ public interface EventMapper {
 
     public static final EventMapper INSTANCE = Mappers.getMapper(EventMapper.class);
 
+    @Mapping(source = "eventTypeId", target = "eventType.id")
     Event eventDtoToEvent(EventDto eventDto);
 
     @Mapping(source = "event.tickets", target = "ticketsIds", qualifiedByName = "ticketToTicketId")
+    @Mapping(source = "eventType.id", target = "eventTypeId")
     EventDto eventToEventDto(Event event);
 
     @Named("ticketToTicketId")
