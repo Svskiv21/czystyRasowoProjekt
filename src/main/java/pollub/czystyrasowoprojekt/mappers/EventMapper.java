@@ -19,11 +19,12 @@ public interface EventMapper {
 
     public static final EventMapper INSTANCE = Mappers.getMapper(EventMapper.class);
 
-    @Mapping(source = "eventTypeId", target = "eventType.id")
+    @Mapping(source = "eventType", target = "eventType")
     Event eventDtoToEvent(EventDto eventDto);
 
     @Mapping(source = "event.tickets", target = "ticketsIds", qualifiedByName = "ticketToTicketId")
-    @Mapping(source = "eventType.id", target = "eventTypeId")
+    @Mapping(source = "eventType", target = "eventType")
+    @Mapping(source = "id", target = "id")
     EventDto eventToEventDto(Event event);
 
     @Named("ticketToTicketId")
@@ -35,6 +36,4 @@ public interface EventMapper {
     static List<Long> kurrrZapial(Event event){
         return event.getTickets().stream().map(Ticket::getId).collect(Collectors.toList());
     }
-
-
 }

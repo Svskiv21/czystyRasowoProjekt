@@ -9,7 +9,7 @@ import java.util.List;
 @Setter
 public class EventTypeDto {
 
-    private String name;
+    private Long id;
 
-    private List<Long> eventsIds;
+    private String name;
 }

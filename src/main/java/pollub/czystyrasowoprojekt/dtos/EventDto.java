@@ -10,6 +10,8 @@ import java.util.List;
 @Setter
 public class EventDto {
 
+    private Long id;
+
     private String title;
 
     private String description;
@@ -22,9 +24,9 @@ public class EventDto {
 
     private String address;
 
-    private Boolean limitedNrOfSeats;
+    private Boolean limitedNumberOfSeats;
 
-    private Long eventTypeId; // nowe
+    private EventTypeDto eventType; // nowe
 
     private List<Long> zonesIds; // nowe
 
