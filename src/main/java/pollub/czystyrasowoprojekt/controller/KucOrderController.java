@@ -16,7 +16,7 @@ public class KucOrderController {
     private KucOrderService service;
 
     @GetMapping("/get/{id}")
-    public KucOrderDto getKucOrder(Long id){
+    public KucOrderDto getKucOrder(@PathVariable Long id){
         return service.getKuc(id);
     }
 
@@ -26,7 +26,7 @@ public class KucOrderController {
     }
 
     @PostMapping("/new")
-    public KucOrder zamowSeNowegoKuca(@RequestBody KucOrderDto kucOrderDto){
+    public KucOrderDto zamowSeNowegoKuca(@RequestBody KucOrderDto kucOrderDto){
         return service.addKuc(kucOrderDto);
     }
 

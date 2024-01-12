@@ -28,8 +28,10 @@ public class KucOrderService {
         return allKucOrders.stream().map(KucOrderMapper.INSTANCE::kucOrderToKucOrderDto).collect(Collectors.toList());
     }
 
-    public KucOrder addKuc(KucOrderDto kucDto){
-        return repository.save(KucOrderMapper.INSTANCE.kucOrderDtoToKucOrder(kucDto));
+    public KucOrderDto addKuc(KucOrderDto kucDto){
+        KucOrder kucOrder = KucOrderMapper.INSTANCE.kucOrderDtoToKucOrder(kucDto);
+        kucOrder.getTickets().forEach(ticket -> ticket.setKucOrder(kucOrder));
+        return KucOrderMapper.INSTANCE.kucOrderToKucOrderDto(repository.save(kucOrder));
     }
 
     public void deleteKuc(Long id){

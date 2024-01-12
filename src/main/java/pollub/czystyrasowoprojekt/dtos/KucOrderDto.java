@@ -13,5 +13,8 @@ public class KucOrderDto {
 
     private String paymentMethod;
 
+    private Long userId;
+
     private List<TicketDto> tickets;
+
 }

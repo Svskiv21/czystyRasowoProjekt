@@ -13,8 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Mapper(unmappedSourcePolicy = ReportingPolicy.IGNORE,
-        unmappedTargetPolicy = ReportingPolicy.IGNORE,
-        uses = {TicketMapper.class})
+        unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface EventMapper {
 
     public static final EventMapper INSTANCE = Mappers.getMapper(EventMapper.class);

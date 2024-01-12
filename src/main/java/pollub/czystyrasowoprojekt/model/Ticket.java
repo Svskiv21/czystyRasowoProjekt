@@ -25,7 +25,7 @@ public class Ticket {
     @Column(name = "seatNumber")
     private Integer seatNumber;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "kucOrder_id")
     private KucOrder kucOrder;
 

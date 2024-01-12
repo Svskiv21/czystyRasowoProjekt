@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -39,6 +40,9 @@ public class User {
 
     @Column
     private String tel_number;
+
+    @OneToMany(mappedBy = "user")
+    private List<KucOrder> kucOrders;
 
     @ManyToMany
     @JoinTable(
