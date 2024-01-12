@@ -2,6 +2,7 @@ package pollub.czystyrasowoprojekt.dtos;
 
 import lombok.Getter;
 import lombok.Setter;
+import pollub.czystyrasowoprojekt.model.Zone;
 
 import java.util.Date;
 import java.util.List;
@@ -28,7 +29,7 @@ public class EventDto {
 
     private EventTypeDto eventType; // nowe
 
-    private List<Long> zonesIds; // nowe
+    private List<ZoneDto> zones; // nowe
 
     private List<Long> ticketsIds;
 

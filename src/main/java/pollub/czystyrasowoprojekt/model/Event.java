@@ -44,7 +44,7 @@ public class Event {
     private EventType eventType;
 
     @OneToMany(mappedBy = "event")
-    private List<Zone> zones; // tego nie ma w dto
+    private List<Zone> zones;
 
     @OneToMany(mappedBy = "event")
     private List<Ticket> tickets;

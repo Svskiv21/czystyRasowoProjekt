@@ -25,6 +25,7 @@ public interface EventMapper {
     @Mapping(source = "event.tickets", target = "ticketsIds", qualifiedByName = "ticketToTicketId")
     @Mapping(source = "eventType", target = "eventType")
     @Mapping(source = "id", target = "id")
+    @Mapping(source = "zones", target = "zones")
     EventDto eventToEventDto(Event event);
 
     @Named("ticketToTicketId")

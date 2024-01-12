@@ -15,7 +15,6 @@ public interface EventTypeMapper {
 
     public static final EventTypeMapper INSTANCE = Mappers.getMapper(EventTypeMapper.class);
 
-
     EventType eventTypeDtoToEventType(EventTypeDto eventTypeDto);
 
 //    @Mapping(source = "events", target = "eventsIds", qualifiedByName = "eventToEventId")

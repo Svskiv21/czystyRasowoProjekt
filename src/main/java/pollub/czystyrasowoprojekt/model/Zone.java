@@ -23,14 +23,17 @@ public class Zone {
     @Column
     private Double price;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id")
     private Event event;
 
     @OneToMany
     private List<Seat> seats;
 
-    public Zone(String name, Double price, Event event, List<Seat> seats) {
+    public Zone(String name,
+                Double price,
+                Event event,
+                List<Seat> seats) {
         this.name = name;
         this.price = price;
         this.event = event;
