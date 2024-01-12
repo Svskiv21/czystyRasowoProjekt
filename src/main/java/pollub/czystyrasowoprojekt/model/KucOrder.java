@@ -22,7 +22,7 @@ public class KucOrder {
     @Column
     private String paymentMethod;
 
-    @OneToMany(mappedBy = "kucOrder")
+    @OneToMany(mappedBy = "kucOrder", cascade = CascadeType.ALL)
     private List<Ticket> tickets;
 
     public KucOrder(String paymentMethod, List<Ticket> tickets) {
