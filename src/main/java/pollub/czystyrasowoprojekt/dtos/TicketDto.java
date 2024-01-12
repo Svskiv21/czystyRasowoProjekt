@@ -11,11 +11,13 @@ public class TicketDto {
 
     private Long eventId;
 
-    //private Long orderId;
+    private Long kucOrderId;
 
     private Double price;
 
     private Integer seatNumber;
 
     private Integer row;
+
+    private Integer zoneNumber;
 }

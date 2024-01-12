@@ -17,8 +17,10 @@ public interface TicketMapper {
     public static final TicketMapper INSTANCE = Mappers.getMapper(TicketMapper.class);
 
     @Mapping(source = "eventId", target = "event.id")
+    @Mapping(source = "kucOrderId", target = "kucOrder.id")
     Ticket ticketDtoToTicket(TicketDto ticketDto);
 
     @Mapping(source = "event.id", target = "eventId")
+    @Mapping(source = "kucOrder.id", target = "kucOrderId")
     TicketDto ticketToTicketDto(Ticket ticket);
 }

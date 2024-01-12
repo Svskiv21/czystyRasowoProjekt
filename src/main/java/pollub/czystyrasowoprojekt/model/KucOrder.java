@@ -23,11 +23,11 @@ public class KucOrder {
     private String paymentMethod;
 
     @OneToMany(mappedBy = "kucOrder")
-    private List<Ticket> ticket;
+    private List<Ticket> tickets;
 
-    public KucOrder(String paymentMethod, List<Ticket> ticket) {
+    public KucOrder(String paymentMethod, List<Ticket> tickets) {
         this.paymentMethod = paymentMethod;
-        this.ticket = ticket;
+        this.tickets = tickets;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class KucOrder {
         return "KucOrder{" +
                 "id=" + id +
                 ", paymentMethod='" + paymentMethod + '\'' +
-                ", ticket=" + ticket +
+                ", tickets=" + tickets +
                 '}';
     }
 }

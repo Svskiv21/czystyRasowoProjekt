@@ -27,9 +27,9 @@ public class EventDto {
 
     private Boolean limitedNumberOfSeats;
 
-    private EventTypeDto eventType; // nowe
+    private EventTypeDto eventType;
 
-    private List<ZoneDto> zones; // nowe
+    private List<ZoneDto> zones;
 
     private List<Long> ticketsIds;
 
