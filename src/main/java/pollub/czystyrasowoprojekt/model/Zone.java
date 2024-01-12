@@ -27,7 +27,7 @@ public class Zone {
     @JoinColumn(name = "event_id")
     private Event event;
 
-    @OneToMany
+    @OneToMany(mappedBy = "zone")
     private List<Seat> seats;
 
     public Zone(String name,

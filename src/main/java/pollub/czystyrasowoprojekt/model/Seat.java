@@ -24,8 +24,8 @@ public class Seat
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @ManyToOne
-    @JoinColumn()
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "zone_id")
     private Zone zone;
 
     public Seat(Integer number, Integer row, Status status, Zone zone) {

@@ -19,5 +19,5 @@ public class ZoneDto {
 
     Long eventId;
 
-    List<Seat> seats;
+    List<SeatDto> seats;
 }

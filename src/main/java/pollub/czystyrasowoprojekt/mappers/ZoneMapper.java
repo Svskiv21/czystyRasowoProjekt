@@ -17,6 +17,7 @@ public interface ZoneMapper {
     Zone ZoneDtoToZone(ZoneDto zoneDto);
 
     @Mapping(source = "event.id", target = "eventId")
+    @Mapping(source = "seats", target = "seats")
     ZoneDto ZoneToZoneDto(Zone zone);
 
 }
