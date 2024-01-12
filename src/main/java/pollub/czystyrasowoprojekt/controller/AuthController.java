@@ -1,5 +1,6 @@
 package pollub.czystyrasowoprojekt.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,7 +28,7 @@ public class AuthController {
     private final JwtUtils jwtUtils;
 
     @PostMapping("/signin")
-    public TokenDto authenticate(@RequestBody LoginCredentialsDto credentials) {
+    public TokenDto authenticate(@Valid @RequestBody LoginCredentialsDto credentials) {
         Authentication authenticate = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         credentials.getEmail(), credentials.getPassword()
@@ -43,7 +44,7 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public TokenDto register(@RequestBody RegisterCredentialsDto credentials) {
+    public TokenDto register(@Valid @RequestBody RegisterCredentialsDto credentials) {
         User user = UserMapper.INSTANCE.registerCredentialsDtoToUser(credentials);
 
         userService.addUser(user);
