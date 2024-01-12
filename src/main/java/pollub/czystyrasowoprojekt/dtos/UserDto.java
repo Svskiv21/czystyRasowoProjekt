@@ -17,5 +17,5 @@ public class UserDto {
 
     private String surname;
 
-    private Integer tel_number;
+    private String tel_number;
 }

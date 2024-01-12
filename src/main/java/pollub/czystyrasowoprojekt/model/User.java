@@ -38,7 +38,7 @@ public class User {
     private String surname;
 
     @Column
-    private Integer tel_number;
+    private String tel_number;
 
     @ManyToMany
     @JoinTable(
