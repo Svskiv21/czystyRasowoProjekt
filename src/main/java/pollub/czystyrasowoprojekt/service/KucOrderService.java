@@ -30,6 +30,9 @@ public class KucOrderService {
 
     public KucOrderDto addKuc(KucOrderDto kucDto){
         KucOrder kucOrder = KucOrderMapper.INSTANCE.kucOrderDtoToKucOrder(kucDto);
+        if(kucOrder.getUser().getId() == null) {
+            kucOrder.setUser(null);
+        }
         kucOrder.getTickets().forEach(ticket -> ticket.setKucOrder(kucOrder));
         return KucOrderMapper.INSTANCE.kucOrderToKucOrderDto(repository.save(kucOrder));
     }
