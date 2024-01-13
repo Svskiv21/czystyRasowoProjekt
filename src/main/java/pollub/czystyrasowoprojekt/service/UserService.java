@@ -24,6 +24,10 @@ public class UserService {
     }
 
     public User addUser(User user) {
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new RuntimeException("User with given email already exists");
+        }
+
         Role role = roleRepository.findByName("USER")
                 .orElseThrow(() -> new RuntimeException("Role USER does not exist in the database"));
 
