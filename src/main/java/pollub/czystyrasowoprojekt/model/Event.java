@@ -21,10 +21,10 @@ public class Event {
     @Column
     private String title;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String pictures;
 
     @Column(name = "startDate")
