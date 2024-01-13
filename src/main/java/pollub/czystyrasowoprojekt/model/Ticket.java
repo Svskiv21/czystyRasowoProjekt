@@ -33,7 +33,7 @@ public class Ticket {
     private Integer row;
 
     @Column(name = "zoneNumber")
-    private Integer zoneNumber;
+    private Long zoneNumber;
 
 
     public Ticket(Event event,
@@ -41,7 +41,7 @@ public class Ticket {
                   Integer seatNumber,
                   KucOrder kucOrder,
                   Integer row,
-                  Integer zoneNumber) {
+                  Long zoneNumber) {
         this.event = event;
         this.price = price;
         this.seatNumber = seatNumber;

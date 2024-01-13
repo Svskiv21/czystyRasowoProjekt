@@ -29,6 +29,11 @@ public class SeatController {
         return seatService.addNewSeat(seatDto);
     }
 
+    @PutMapping("/reserve")
+    public List<SeatDto> reserveSeats(@RequestBody List<SeatDto> seats) {
+        return seatService.reserveSeats(seats);
+    }
+
     @DeleteMapping("/remove/{id}")
     public String deleteSeat(@PathVariable Long id) {
         seatService.deleteSeat(id);

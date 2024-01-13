@@ -8,7 +8,8 @@ import pollub.czystyrasowoprojekt.dtos.ZoneDto;
 import pollub.czystyrasowoprojekt.model.Zone;
 
 @Mapper(unmappedSourcePolicy = ReportingPolicy.IGNORE,
-        unmappedTargetPolicy = ReportingPolicy.IGNORE)
+        unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        uses = {SeatMapper.class})
 public interface ZoneMapper {
 
     public static final ZoneMapper INSTANCE = Mappers.getMapper(ZoneMapper.class);
